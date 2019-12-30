@@ -27,12 +27,12 @@ function isBipartite(graph) {
   const { nodes } = graph;
   
   function _isBipartite(curNode = {}, restOfNodes = [], curKey = "a", maps = {a: [], b: []}) {
-    if (restOfNodes.length == 0)
-      return true;
-
     if(curNode.relationships.some(x =>
       maps[curKey] && maps[curKey].includes(x)
     )) return false;
+
+    if (restOfNodes.length == 0)
+      return true;
 
     return _isBipartite(
       restOfNodes[0], 
