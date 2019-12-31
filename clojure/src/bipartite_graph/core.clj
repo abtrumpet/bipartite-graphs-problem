@@ -34,7 +34,7 @@
   (let [nodes (:nodes graph)]
     (loop [cur-node (first nodes)
            rest-of-nodes (rest nodes)
-           cur-key (keyword 'a)
+           cur-key :a
            maps {:a [] :b []}]
       (if (some #(.contains (get maps cur-key) %) (:relationships cur-node))
         false
@@ -43,9 +43,9 @@
           (recur
            (first rest-of-nodes)
            (rest rest-of-nodes)
-           (if (= (keyword 'a) cur-key)
-             (keyword 'b)
-             (keyword 'a)
+           (if (= :a cur-key)
+             :b
+             :a
              )
            (merge-with into maps {cur-key [(:id cur-node)]})))))))
 
